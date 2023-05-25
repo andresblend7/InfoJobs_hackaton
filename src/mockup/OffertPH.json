@@ -1,0 +1,73 @@
+{
+  "title": "CONTROLLER SENIOR COLOMBIA - (BASE EN COLOMBIA)",
+  "id": "34b0f39b7144d8aaf36174e89e078d",
+  "state": 1,
+  "city": "Bogota",
+  "experienceMin": {
+    "id": 5,
+    "value": "Más de 5 años"
+  },
+  "category": {
+    "id": 10,
+    "value": "Administración de empresas"
+  },
+  "subcategory": {
+    "id": 3005,
+    "value": "Finanzas y contabilidad"
+  },
+  "studiesMin": {
+    "id": 143,
+    "value": "Postgrado"
+  },
+  "residence": {
+    "id": 2,
+    "value": "Provincia Puesto Vacante"
+  },
+  "country": {
+    "id": 11,
+    "value": "Colombia"
+  },
+  "contractType": {
+    "id": 1,
+    "value": "Indefinido"
+  },
+  "journey": {
+    "id": 1,
+    "value": "Completa"
+  },
+
+  "profile": {
+    "id": "822c042c-ed11-4ae2-a4a2-43ca2ed0e069",
+    "name": "Multinacional española líder en el sector industrial",
+    "corporateWebsiteUrl": "/multinacional-espanola-lider-en-el-sector-industrial/em-i822c042c-ed11-4ae2-a4a2-43ca2ed0e069",
+    "typeIndustry": {
+      "id": 75,
+      "value": "Ingeniería"
+    }
+  },
+  "vacancies": 1,
+  "minRequirements": "Licenciado en Administración de Empresas.\r\n·\tDeseable Máster en Dirección Financiera.\r\n·\tExperiencia de al menos 3 años como Controller y/o Área Financiera Internacional.\r\n·\tImprescindible INGLÉS y ESPAÑOL a nivel avanzado.\r\n·\tDisponibilidad para residir en Colombia.\r\n·\tAcreditar experiencia mínima de 2 años en contabilidad y tesorería en países latinoamericanos, preferentemente en empresas del sector de la construcción.",
+  "description": "Se responsabilizará de:\r\nDar soporte en el asesoramiento en la gestión de los riesgos de la compañía, velar por el buen hacer de la filial y gestionar todos los aspectos financieros de la misma para obtener la mayor rentabilidad y favorecer el crecimiento de la Compañía en Colombia.\r\n\r\nPrincipales funciones:\r\n·\tOrganización y gestión del funcionamiento interno de la oficina. Servicios Generales.\r\n·\tPreparación de presupuestos de gastos.\r\n·\tSeguimiento de presupuesto de tesorería de la filial.\r\n·\tControl de gastos, pagos y relación con proveedores/clientes.\r\n·\tControl y gestión de Tesorería y Contabilidad.\r\n·\tReporting a la matriz.\r\n·\tAnálisis financiero-contable.\r\n·\tRelación con bancos, asesores externos y auditores tanto internos como externos.\r\n·\tElaboración y gestión de los reportes mensuales y anuales a casa matriz (España).",
+  "jobLevel": {
+    "id": 5,
+    "value": "Mando intermedio"
+  },
+  "staffInCharge": {
+    "id": 2,
+    "value": "1 - 5"
+  },
+  "link": "https://www.infojobs.net/bogota/controller-senior-colombia-base-colombia/of-i34b0f39b7144d8aaf36174e89e078d",
+  "active": true,
+  "skillsList": [
+    {
+      "skill": "Finanzas"
+    },
+    {
+      "skill": "Control de gestión"
+    },
+    {
+      "skill": "Inglés"
+    }
+  ],
+  "salaryDescription": "Salario no disponible"
+}
