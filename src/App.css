@@ -15,11 +15,55 @@ main{
     margin: 0;
 }
 
+.row{
+    border-bottom: 1px solid #e6e6e6;
+}
+
 .column{
     padding: 5%;
-      background-color: #167db7;
+    background-color: #f5f5f5;
+    height: 92%;
 }
 
 .cardOffer{
     height: 90%;
+}
+
+.offer-title{
+    width: 80%;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #167cb77c;
+}
+
+.crown-div{
+    position: relative;
+    float: right;
+    right: 0;
+    box-shadow: 0px 0 7px 1px #F1C40F;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.offer-top{
+    box-shadow: 0px 0 7px 1px #ffff0421;
+}
+
+.color-info-primary{
+    color : #167DB7;
+}
+
+.span-skill{
+    display: inline-block;
+    padding: 2px 8px 2px 8px;
+    background-color: #E8F2F8;
+    border-radius: 25px;
+}
+.span-skill:hover{
+    background-color: #a7d4f0;
+}
+.bg-primary{
+    background-color: #167DB7 !important;
+}
+.bg-primary:hover{
+    background-color: #FF6340 !important;
 }

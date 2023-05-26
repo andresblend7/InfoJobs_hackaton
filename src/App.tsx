@@ -121,11 +121,22 @@ function App() {
         <ModalFilters clickFunction={searchModalCallback}></ModalFilters>
       )}
 
-      {/* <div className='row'>
-        <nav>
-          <h1 className='text-center'>InfoJobs Vs Selector</h1>
+      <div className='row h-[8%]'>
+        <nav className='w-full pl-6'>
+          <img
+            className='pt-4 inline-block'
+            width={38}
+            src='/logo.svg'
+            alt='mini-logo-infojobs'
+          />
+          <img
+            className='pt-6 pl-6 inline-block'
+            src='/text-logo.svg'
+            alt='infojobs'
+          />
+          <span className='pt-3 pl-10 inline-block'>Comparador de ofertas</span>
         </nav>
-      </div> */}
+      </div>
       <div className='page w-full m-0'>
         <div className='column'>
           <div className='h-[90%] max-h-screen overflow-y-auto pr-2'>
@@ -134,7 +145,13 @@ function App() {
               {actualIndexOffer} / {offersList.length}
             </p>
             {orderHistory().map((offer) => {
-              return <OfferHistory key={offer.id} data={offer}></OfferHistory>;
+              return (
+                <OfferHistory
+                  key={offer.id}
+                  data={offer}
+                  idTop={getTopOffer()?.id}
+                ></OfferHistory>
+              );
             })}
           </div>
         </div>
