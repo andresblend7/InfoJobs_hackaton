@@ -146,6 +146,12 @@ export function OfferCard({
                 </div>
               </>
             )}
+
+            <p className=' mt-2 font-semibold'>Experiencia requerida:</p>
+
+            <p className='mb-4 px-2 text-neutral-600  '>
+              {convertNewlinesToBreaks(data.experienceMin.value)}
+            </p>
           </motion.div>
           <div className='h-[10%] '>
             <div className='w-full pt-5  text-center p-3 h-full'>

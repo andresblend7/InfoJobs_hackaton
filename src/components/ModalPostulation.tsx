@@ -24,7 +24,10 @@ export function ModalPostulation({ callbackCancel }: ModalPostulationProps) {
                 ¡Te haz postulado a la oferta que más te gustó!
               </p>
               <div className='flex justify-center'>
-                <button className='bg-primary text-white font-bold py-2 px-4 rounded mr-2'>
+                <button
+                  className='bg-primary text-white font-bold py-2 px-4 rounded mr-2'
+                  onClick={() => location.reload()}
+                >
                   Nueva búsqueda
                 </button>
                 <button

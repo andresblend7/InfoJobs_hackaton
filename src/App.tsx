@@ -35,18 +35,17 @@ function App() {
     initExpList();
   }, []);
   useEffect(() => {
-    console.log({ actualLeftOffer, actualRigthOffer });
+    // console.log({ actualLeftOffer, actualRigthOffer });
   }, [actualLeftOffer, actualRigthOffer]);
 
   const searchModalCallback = (filters: any): void => {
-    console.log('searchModalCallback', filters);
     setHasResults(false);
     getOffersByFormFilters(filters.keywords, filters.exp, filters.minSalary);
   };
 
   function getOffersByFormFilters(q: string, e: string, s: string) {
     getOffersByProps({ query: q, expMin: e, salaryMin: s }).then((offers) => {
-      console.log({ offers });
+      // console.log({ offers });
       if (offers.totalResults > 1) {
         setOffersList(offers.items);
         setInfoOfferById(offers.items[0].id, true);
@@ -106,8 +105,6 @@ function App() {
           idOfferDismissed = actualLeftOffer?.id;
         }
 
-        console.log({ offerItemSelected });
-
         const offerDismissed = offersList.find(
           (x) => x.id === idOfferDismissed
         );
@@ -115,7 +112,6 @@ function App() {
           (x) => x.id === idOfferDismissed
         );
 
-        console.log({ idOfferDismissed });
         let maxScore = getTopOffer()?.score;
 
         if (offerInHistory) {
@@ -142,7 +138,6 @@ function App() {
               offerDismissed!.offerInfo = actualLeftOffer;
             }
 
-            // console.log({ maxScore });
             maxScore = maxScore ? maxScore : 0;
             offerItemSelected.score += maxScore + 1;
             if (!offerDismissInHistory) {
@@ -157,7 +152,6 @@ function App() {
           }
         }
 
-        console.log({ offerToHistory });
         setOfferShowed(offerToHistory);
       }
     }
