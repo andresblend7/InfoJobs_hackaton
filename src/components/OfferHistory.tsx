@@ -1,10 +1,26 @@
 import { Offer } from '../models/Offer';
 import { Item } from '../services/Infojobs.service';
 
-export function OfferHistory({ data, idTop }: OfferHistoryData) {
+export function OfferHistory({
+  data,
+  idTop,
+  callbackChoose,
+}: OfferHistoryData) {
+  const handeClick = () => {
+    callbackChoose(data.id);
+  };
+
+  const auxClass = idTop === data.id ? 'offer-top' : '';
+
   return (
     <>
-      <div className='block rounded-lg bg-white p-6  mt-3 cursor-pointer hover:shadow-md '>
+      <div
+        className={
+          auxClass +
+          ' block rounded-lg bg-white p-6  mt-3 cursor-pointer hover:shadow-md '
+        }
+        onClick={handeClick}
+      >
         {idTop == data.id && (
           <div className='crown-div'>
             <img src='/crown.png' width={14} alt='mejorOferta'></img>
@@ -19,5 +35,5 @@ export function OfferHistory({ data, idTop }: OfferHistoryData) {
 export interface OfferHistoryData {
   data: Item;
   idTop: string;
-  callbackChoose?: (id: string) => void;
+  callbackChoose: (id: string) => void;
 }

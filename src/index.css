@@ -7,6 +7,14 @@ body{
     margin: 0;
 }
 
+.modal-container{
+  min-width: 38%;
+}
+
+.euro{
+  color: gray;
+}
+
 /* Firefox */
 * {
     scrollbar-width: thin;

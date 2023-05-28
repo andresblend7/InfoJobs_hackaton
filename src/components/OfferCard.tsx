@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { Offer } from '../models/Offer';
 import { motion } from 'framer-motion';
+import { ModalPostulation } from './ModalPostulation';
 
-export function OfferCard({ data, isLeft, callbackChoose, idTop }: offerData) {
+export function OfferCard({
+  data,
+  isLeft,
+  callbackChoose,
+  idTop,
+  isEndResults,
+}: offerData) {
   const [btnClass, setBtnClass] = useState('bg-primary');
+  const [postulate, setPostulate] = useState(false);
 
   function convertNewlinesToBreaks(text: string) {
     const parts = text.split('\n');
@@ -33,6 +41,20 @@ export function OfferCard({ data, isLeft, callbackChoose, idTop }: offerData) {
       : `https://www.google.com.co/search?q=${data.profile.name}`;
   };
 
+  const auxPostualte = () => {
+    return data?.id === idTop || isEndResults;
+  };
+
+  const handlePostulate = () => {
+    setTimeout(() => {
+      setPostulate(true);
+    }, 350);
+  };
+
+  const handleCancelPostulate = () => {
+    setPostulate(false);
+  };
+
   let cardClass = 'block rounded-lg bg-white p-6  cardOffer max-h-screen ';
   if (data != null) if (idTop == data.id) cardClass += 'offer-top';
 
@@ -48,7 +70,7 @@ export function OfferCard({ data, isLeft, callbackChoose, idTop }: offerData) {
 
           <motion.div
             key={data?.id}
-            animate={{ x: [50, 0] }}
+            animate={{ x: [50, 0], opacity: [0, 1] }}
             transition={{ duration: 0.6 }}
             className='h-[10%]'
           >
@@ -77,7 +99,7 @@ export function OfferCard({ data, isLeft, callbackChoose, idTop }: offerData) {
 
           <motion.div
             key={'desc-' + data?.id}
-            animate={{ x: [50, 0] }}
+            animate={{ x: [50, 0], opacity: [0, 1] }}
             transition={{ duration: 0.6 }}
             className='h-[80%]  overflow-y-auto max-h-screen  text-sm'
           >
@@ -103,7 +125,7 @@ export function OfferCard({ data, isLeft, callbackChoose, idTop }: offerData) {
 
             {data.skillsList?.length > 0 && (
               <>
-                <p className='font-semibold'>Conocimientos requeridos:</p>
+                <p className='font-semibold pb-2'>Conocimientos requeridos:</p>
                 <div className='px-2 space-x-2 space-y-2'>
                   {/* <p className='mb-4 px-2 text-neutral-600  '> */}
                   {data.skillsList.map((skill) => {
@@ -126,24 +148,65 @@ export function OfferCard({ data, isLeft, callbackChoose, idTop }: offerData) {
           </motion.div>
           <div className='h-[10%] '>
             <div className='w-full pt-5  text-center p-3 h-full'>
-              <button
-                type='button'
-                className={
-                  btnClass +
-                  ' inline-block align-middle rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out  hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-800 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] -4px_rgba(59,113,202,0.5)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'
-                }
-                data-te-ripple-init
-                data-te-ripple-color='light'
-                onClick={handleChoose}
-              >
-                Prefiero esta oferta
-              </button>
+              {!isEndResults && (
+                <button
+                  type='button'
+                  className={
+                    btnClass +
+                    ' inline-block align-middle rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out  hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-800 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] -4px_rgba(59,113,202,0.5)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'
+                  }
+                  data-te-ripple-init
+                  data-te-ripple-color='light'
+                  onClick={handleChoose}
+                >
+                  {data?.id === idTop
+                    ? 'Comparar contra otra'
+                    : 'Prefiero esta'}
+                </button>
+              )}
+
+              {auxPostualte() && (
+                <button
+                  type='button'
+                  className={
+                    ' bg-seccondary ml-3 inline-block align-middle rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out  hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-800 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] -4px_rgba(59,113,202,0.5)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'
+                  }
+                  data-te-ripple-init
+                  data-te-ripple-color='light'
+                  onClick={handlePostulate}
+                >
+                  Postularme ahora
+                </button>
+              )}
             </div>
           </div>
+          {postulate && <ModalPostulation></ModalPostulation>}
         </>
       )}
 
-      {!data && <>Cargando</>}
+      {!data && (
+        <>
+          <div className='w-full h-[10%]'>
+            <h3 className='h-4 w-[90%] bg-gray-200 rounded-md'></h3>
+          </div>
+          <div className='w-full h-[80]'>
+            <h3 className='h-3 w-[16%] bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-full bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-[96%] bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-[92%] bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-[16%] bg-gray-200 rounded-md mt-8 mb-2'></h3>
+            <h3 className='h-3 w-[99%] bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-[66%] bg-gray-200 rounded-md my-2'></h3>
+            <div className='w-full py-6'></div>
+            <h3 className='h-3 w-[16%] bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-full bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-[96%] bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-[99%] bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-[99%] bg-gray-200 rounded-md my-2'></h3>
+            <h3 className='h-3 w-[75%] bg-gray-200 rounded-md my-2'></h3>
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -153,4 +216,5 @@ export interface offerData {
   isLeft: boolean;
   callbackChoose?: (offer: offerData) => void;
   idTop?: string;
+  isEndResults?: boolean;
 }

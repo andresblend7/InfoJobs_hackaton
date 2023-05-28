@@ -30,9 +30,16 @@ main{
 }
 
 .offer-title{
-    width: 80%;
+    width: 95%;
     padding-bottom: 2px;
     border-bottom: 1px solid #167cb77c;
+}
+
+.bb-primary{
+    border-bottom: 1px solid #167cb77c;
+}
+.bg-primary-disabled{
+    background-color: #999999 !important;
 }
 
 .crown-div{
@@ -45,7 +52,10 @@ main{
 }
 
 .offer-top{
-    box-shadow: 0px 0 7px 1px #ffff0421;
+    /* box-shadow: 0px 0 7px 1px #ffff0421;
+     */
+     transition: border linear .5s;
+     border: 1px dashed #F1C40F;
 }
 
 .color-info-primary{
@@ -65,5 +75,9 @@ main{
     background-color: #167DB7 !important;
 }
 .bg-primary:hover{
+    background-color: #FF6340 !important;
+}
+
+.bg-seccondary{
     background-color: #FF6340 !important;
 }
