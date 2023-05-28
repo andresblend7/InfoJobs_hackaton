@@ -251,7 +251,7 @@ function App() {
             </div>
             <div className='w-1/2'>
               <span className='pt-6 pl-10 inline-block font-bold color-info-primary'>
-                COMAPRADOR DE OFERTAS DE INFOJOBS
+                COMPARADOR DE OFERTAS DE INFOJOBS
               </span>
             </div>
           </div>

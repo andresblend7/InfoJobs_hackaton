@@ -1,4 +1,10 @@
-export function ModalPostulation() {
+import { useEffect } from 'react';
+import confetti from 'canvas-confetti';
+
+export function ModalPostulation({ callbackCancel }: ModalPostulationProps) {
+  useEffect(() => {
+    confetti();
+  }, []);
   return (
     <div
       className='relative z-10'
@@ -21,7 +27,12 @@ export function ModalPostulation() {
                 <button className='bg-primary text-white font-bold py-2 px-4 rounded mr-2'>
                   Nueva búsqueda
                 </button>
-                <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded'>
+                <button
+                  className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded'
+                  onClick={() => {
+                    callbackCancel();
+                  }}
+                >
                   Regresar
                 </button>
               </div>
@@ -31,4 +42,8 @@ export function ModalPostulation() {
       </div>
     </div>
   );
+}
+
+export interface ModalPostulationProps {
+  callbackCancel: () => void;
 }

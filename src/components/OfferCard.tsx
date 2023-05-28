@@ -48,10 +48,11 @@ export function OfferCard({
   const handlePostulate = () => {
     setTimeout(() => {
       setPostulate(true);
-    }, 350);
+    }, 150);
   };
 
-  const handleCancelPostulate = () => {
+  const handleCancelPostulate = (): void => {
+    console.log('cancel');
     setPostulate(false);
   };
 
@@ -180,7 +181,11 @@ export function OfferCard({
               )}
             </div>
           </div>
-          {postulate && <ModalPostulation></ModalPostulation>}
+          {postulate && (
+            <ModalPostulation
+              callbackCancel={handleCancelPostulate}
+            ></ModalPostulation>
+          )}
         </>
       )}
 
