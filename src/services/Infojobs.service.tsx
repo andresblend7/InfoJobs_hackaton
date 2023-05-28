@@ -1,10 +1,10 @@
+import { SECRET_API_IJ } from '../keyStore/keyScret';
 import { Offer } from '../models/Offer';
 
 const url = '/api/api';
 //   const url = '/api/api/7/offer/b197a64f5441eb91c0c465472e5cc8';
 
-const authorizationToken =
-  'Basic XXXXXXXXXXXXXXXXXXXX';
+const authorizationToken = `Basic ${SECRET_API_IJ}`;
 
 export async function getOffersByProps(
   filters: OfferSearchProp
