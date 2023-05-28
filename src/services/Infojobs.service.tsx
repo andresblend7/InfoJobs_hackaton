@@ -4,7 +4,7 @@ const url = '/api/api';
 //   const url = '/api/api/7/offer/b197a64f5441eb91c0c465472e5cc8';
 
 const authorizationToken =
-  'Basic YzJlZmE1MzNhODZmNGU3NWE0ZjdmNzI2YzEwYTI1NTU6REcwSDhZQUowNVAzRnJNTUdWMnRYaG8xWDd3ZEkwWEJoZDJkakJReFpQeFNTRFRXMFI=';
+  'Basic XXXXXXXXXXXXXXXXXXXX';
 
 export async function getOffersByProps(
   filters: OfferSearchProp
