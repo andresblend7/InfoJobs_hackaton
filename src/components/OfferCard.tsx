@@ -75,7 +75,6 @@ export function OfferCard({
             transition={{ duration: 0.6 }}
             className='h-[10%]'
           >
-            {/* <div className='h-[10%] '> */}
             <p className='font-bold offer-title'>{data.title}</p>
             <div className='flex items-center text-sm pt-2'>
               <span className=''>
@@ -104,7 +103,6 @@ export function OfferCard({
             transition={{ duration: 0.6 }}
             className='h-[80%]  overflow-y-auto max-h-screen  text-sm'
           >
-            {/* <div className='h-[80%]  overflow-y-auto max-h-screen  text-sm'> */}
             <p className='font-semibold pt-2'>Compañía:</p>
             <a
               href={urlCompany()}
@@ -128,7 +126,6 @@ export function OfferCard({
               <>
                 <p className='font-semibold pb-2'>Conocimientos requeridos:</p>
                 <div className='px-2 space-x-2 space-y-2'>
-                  {/* <p className='mb-4 px-2 text-neutral-600  '> */}
                   {data.skillsList.map((skill) => {
                     return (
                       <a
