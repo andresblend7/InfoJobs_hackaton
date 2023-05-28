@@ -10,6 +10,8 @@ import {
 } from './services/Infojobs.service';
 import { OfferHistory } from './components/OfferHistory';
 
+import { motion } from 'framer-motion';
+
 //ttps://www.figma.com/community/file/1239958249701816228
 // https://developer.infojobs.net/
 
@@ -65,7 +67,7 @@ function App() {
     if (newOfferToShow) {
       setInfoOfferById(newId, !offerChoosed.isLeft);
 
-      let offersShowed: Item[] = [];
+      let offerToHistory: Item[] = [];
 
       const offerInHistory = offerShowed.find(
         (x) => x.id === offerChoosed.data.id
@@ -80,28 +82,45 @@ function App() {
         (x) => x.id === idOfferDismissed
       );
 
+      console.log({ idOfferDismissed });
+
       if (offerInHistory) {
         offerInHistory.score += 1;
-        offersShowed = [...offerShowed, offerDismissed];
+        if (!offerDismissInHistory) {
+          offerToHistory = [...offerShowed, offerDismissed];
+          console.log('Exists1 ');
+        } else {
+          offerToHistory = [...offerShowed];
+          console.log('Exists 2');
+        }
       } else {
+        console.log('Not Exists');
+
         if (offerItemSelected) {
           let maxScore = getTopOffer()?.score;
           console.log({ maxScore });
           maxScore = maxScore ? maxScore : 0;
           offerItemSelected.score += maxScore + 1;
           if (!offerDismissInHistory) {
-            offersShowed = [...offerShowed, offerItemSelected, offerDismissed];
+            offerToHistory = [
+              ...offerShowed,
+              offerItemSelected,
+              offerDismissed,
+            ];
           } else {
-            offersShowed = [...offerShowed, offerItemSelected];
+            offerToHistory = [...offerShowed, offerItemSelected];
           }
         }
       }
-      setOfferShowed(offersShowed);
+
+      console.log({ offerToHistory });
+      setOfferShowed(offerToHistory);
     }
   }
 
   function orderHistory(): Item[] {
-    return offerShowed.sort((a, b) => {
+    const history = [...offerShowed];
+    return history.sort((a, b) => {
       if (a.score < b.score) {
         return 1;
       } else {
@@ -139,18 +158,25 @@ function App() {
       </div>
       <div className='page w-full m-0'>
         <div className='column'>
-          <div className='h-[90%] max-h-screen overflow-y-auto pr-2'>
+          <div className='h-[88%] max-h-screen overflow-y-auto pr-2'>
             SIDEBAR
             <p>
               {actualIndexOffer} / {offersList.length}
             </p>
             {orderHistory().map((offer) => {
               return (
-                <OfferHistory
+                <motion.div
                   key={offer.id}
-                  data={offer}
-                  idTop={getTopOffer()?.id}
-                ></OfferHistory>
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <OfferHistory
+                    key={offer.id}
+                    data={offer}
+                    idTop={getTopOffer()?.id}
+                  ></OfferHistory>
+                </motion.div>
               );
             })}
           </div>
